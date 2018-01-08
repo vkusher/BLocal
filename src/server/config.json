@@ -1,0 +1,5 @@
+﻿{
+    "connectionString": "mongodb://blocal:OBYrcill4QGn5OCvQN5aRcxGRcMW2bQBK9XoX4QVe0hQcBVRqwQqIUh6hrt7HkZ7GZtDAGi8K6HBV4yvIIzluQ==@blocal.documents.azure.com:10255/blocaldb?ssl=true&replicaSet=globaldb",
+    "apiUrl": "http://localhost:4000",
+    "secret": "pass@word1"
+}

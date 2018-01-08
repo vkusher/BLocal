@@ -1,0 +1,45 @@
+﻿
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="left-login">
+            <img src="../assets/air.png"/>
+        </div>
+        <div class="right-login">
+            BeLocal
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <span>Already a user? <b>Login...</b></span>
+        <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" [required]="model.propertyid ? false : true" />
+                <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [required]="model.propertyid ? false : true" />
+                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            </div>
+            <span>Or
+                <!--<div (click)="loginWithFacebook()" class="fb-login-button" data-scope="email,public_profile" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>-->
+                <div class="facebooklogin"><a (click)="loginWithFacebook()" class="btn btn-link"></a></div>
+            </span>
+            <hr>
+            <span>New?<a [routerLink]="['/register']" class="btn btn-link">Let's Register...</a></span>
+            <hr> 
+            <span>Not now? <b>Let me in as guest...</b></span>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !propertyid.valid }">
+                <label for="propertyid">Property ID</label>
+                <input type="text" class="form-control" name="propertyid" [(ngModel)]="model.propertyid" #propertyid="ngModel" [required]="!model.username && !model.password ? false : true"/>
+                <div *ngIf="f.submitted && !propertyid.valid" class="help-block">Property ID is required</div>
+            </div>  
+            <div class="form-group">
+                    <button [disabled]="loading" class="btn btn-primary">Login</button>
+                    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />            
+                </div>        
+        </form>
+    </div>
+</div>
