@@ -1,19 +1,22 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../_models/index';
 
+
 @Injectable()
-export class UserService {
-    constructor(private db: AngularFireDatabase) { }
+export class UserService {    
+    constructor(private db: AngularFirestore) {
+        
+    }
     users: Observable<any[]>;
 
 
     createUser(user: User){
-        let usersRef = this.db.database.ref().child("users");
-        usersRef.child(user._id).set({             
+        let usersRef = this.db.collection("users");
+        usersRef.doc(user._id).set({             
             firstName: user.firstName,
             lastName: user.lastName,
             phoneNumber: user.phoneNumber,                
@@ -28,8 +31,8 @@ export class UserService {
     createUserFromFacebook(facebookUser: any){
         if(facebookUser.additionalUserInfo && facebookUser.additionalUserInfo.profile && facebookUser.user){
             let prof = facebookUser.additionalUserInfo.profile;
-            let usersRef = this.db.database.ref().child("users");
-            usersRef.child(facebookUser.user.uid).set({             
+            let usersRef = this.db.collection("users");
+            usersRef.doc(facebookUser.user.uid).set({             
                 firstName: prof.first_name,
                 lastName: prof.last_name,
                 phoneNumber: '',                

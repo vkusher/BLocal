@@ -14,6 +14,7 @@ import { customHttpProvider } from './_helpers/index';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 
@@ -40,7 +41,9 @@ export const firebaseConfig = {
       HttpModule,
       routing,
       FacebookModule.forRoot(),
-      AngularFireModule.initializeApp(firebaseConfig),
+      AngularFireModule.initializeApp(firebaseConfig),      
+      AngularFirestoreModule,
+      AngularFireModule,
       AngularFireDatabaseModule,
       AngularFireAuthModule
   ],
@@ -56,8 +59,7 @@ export const firebaseConfig = {
       AuthGuard,
       AlertService,
       AuthenticationService,
-      UserService
-
+      UserService 
   ],
   bootstrap: [AppComponent]
 })
