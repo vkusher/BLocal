@@ -26,10 +26,10 @@ export class UserService {
     }
 
     createUserFromFacebook(facebookUser: any){
-        if(facebookUser.additionalUserInfo && facebookUser.additionalUserInfo.profile ){
+        if(facebookUser.additionalUserInfo && facebookUser.additionalUserInfo.profile && facebookUser.user){
             let prof = facebookUser.additionalUserInfo.profile;
             let usersRef = this.db.database.ref().child("users");
-            usersRef.child(prof.id).set({             
+            usersRef.child(facebookUser.user.uid).set({             
                 firstName: prof.first_name,
                 lastName: prof.last_name,
                 phoneNumber: '',                
