@@ -1,8 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AlertService, AuthenticationService } from '../_services/index';
-import { FacebookService, InitParams, LoginResponse  } from 'ngx-facebook';
+import { AlertService, AuthenticationService, UserService } from '../_services/index';
+
+
 import { User } from '../_models/index';
 
 @Component({
@@ -21,14 +22,8 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
-        private fb: FacebookService) { 
-            let initParams: InitParams = {
-                appId: '414359645650112',
-                xfbml: true,
-                version: 'v2.11'
-              };
-           
-              fb.init(initParams);
+        private userService: UserService) { 
+            
         }
 
     ngOnInit() {
@@ -42,59 +37,42 @@ export class LoginComponent implements OnInit {
     loginWithFacebook(){
         this.loading = true;
         this.authenticationService.loginWithFacebook()
-        .then((response: LoginResponse) => 
-        {           
-            
-            this.fb.api('/me','post',{fields: 'last_name,first_name,email'} ).then(resp=>
-                {
-                    console.log(resp);
-                    var u = resp;
-                    let user = {
-                        _id: u.id,
-                        firstName: u.first_name,
-                        lastName: u.last_name,
-                        username: u.email,
-                        facebookid: u.id
-                    };
-                    
-                    this.authenticationService.createFacebookUser(user);
-                    
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    this.router.navigate([this.returnUrl]);
-                });
-            
+        .then(res=>{
+            console.error(res);
+            this.loading = false;
+            this.userService.createUserFromFacebook(res);
+            this.router.navigate([this.returnUrl]);            
         })
-        .catch((error: any) => 
-        {
+        .catch(error=>{
             console.error(error)
             this.alertService.error(error);
             this.loading = false;
-        });        
+        });          
     }
 
     login() {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
-            .subscribe(
+            .then(
                 data => {
                     this.router.navigate([this.returnUrl]);
-                },
-                error => {
+                })
+                .catch(error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
     }
 
     loginguest(){
-        this.loading = true;
+        /*this.loading = true;
         this.authenticationService.loginguest(this.model.propertyid)
-            .subscribe(
+            .then(
                 data => {
                     this.router.navigate([this.returnUrl]);
-                },
-                error => {
+                }
+                .catch(error => {
                     this.alertService.error(error);
                     this.loading = false;
-                });
+                });*/
     }
 }

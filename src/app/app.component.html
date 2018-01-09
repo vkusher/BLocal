@@ -1,6 +1,17 @@
 <!-- main app container -->
 <div class="jumbotron">
   <div class="container">
+      <!--<nav class="navbar navbar-default navbar-fixed-top">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="about:blank">BLocal</a>
+          </div>
+          <div *ngIf="isLoggedIn">
+            <p class="navbar-text navbar-right">LoggedIn: {{userDisplayName}}</p>
+          </div>
+          <div *ngIf="!isLoggedIn">
+                <p class="navbar-text navbar-right"><a class="navbar-brand" href="/login">Login</a></p>
+          </div>
+      </nav>-->
       <div class="col-sm-8 col-sm-offset-2">
           <alert></alert>
           <router-outlet></router-outlet>

@@ -4,5 +4,9 @@
     password: string;
     firstName: string;
     lastName: string;    
-    facebookid: string;    
+    firebaseId: string;  
+    phoneNumber: string;  
+    isOwner: Boolean;
+    isAdmin: Boolean;
+    isEmailApproved: Boolean;
 }

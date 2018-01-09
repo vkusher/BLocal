@@ -5,6 +5,7 @@ import { AlertService, UserService, AuthenticationService } from '../_services/i
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { Observable } from 'rxjs/Observable';
+import { User } from '../_models/index';
 
 @Component({
     moduleId: module.id,
@@ -24,17 +25,17 @@ export class RegisterComponent {
             
          }
 
-    register() {
-        let $this = this;
+    register() {        
         this.loading = true;
         this.authService.registerNewUser(this.model.username, this.model.password)
         //Promise.resolve(this.afAuth.auth.createUserWithEmailAndPassword(this.model.email, this.model.password))
         .then(resp =>{            
-            var user = this.afAuth.auth.currentUser;
-            console.log(resp);
+            let user = this.afAuth.auth.currentUser;            
             console.log(user);
-            this.alertService.success('Registration successful', true);
-            //this.router.navigate(['/login']);
+            this.createUserInDb(resp.uid);
+            this.alertService.success('Registration successful', true); 
+            user.sendEmailVerification();  
+            this.router.navigate(['/login']);          
         })
         .catch(error => {
             // Handle Errors here.
@@ -48,5 +49,15 @@ export class RegisterComponent {
             this.alertService.error(error);
             this.loading = false;
           });        
+    }
+
+    private createUserInDb(id: string) : void{
+        let usr = new User();
+        usr._id = id;
+        usr.firstName =  this.model.firstName;
+        usr.lastName =  this.model.lastName;
+        usr.username =  this.model.username;
+        usr.phoneNumber =  this.model.phoneNumber;
+        this.userService.createUser(usr);
     }
 }
