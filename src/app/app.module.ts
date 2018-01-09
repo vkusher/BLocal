@@ -12,6 +12,11 @@ import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { customHttpProvider } from './_helpers/index';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+
+
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
@@ -19,13 +24,25 @@ import { RegisterComponent } from './register/index';
 
 import { FacebookModule } from 'ngx-facebook';
 
+export const firebaseConfig = {
+    apiKey: "AIzaSyBgiDyyScVcEXk8Hfc6B7k9gLopYLEx8XA",
+    authDomain: "blocal-191611.firebaseapp.com",
+    databaseURL: "https://blocal-191611.firebaseio.com",
+    projectId: "blocal-191611",
+    storageBucket: "blocal-191611.appspot.com",
+    messagingSenderId: "391571977147"
+}
+
 @NgModule({
   imports: [
       BrowserModule,
       FormsModule,
       HttpModule,
       routing,
-      FacebookModule.forRoot()
+      FacebookModule.forRoot(),
+      AngularFireModule.initializeApp(firebaseConfig),
+      AngularFireDatabaseModule,
+      AngularFireAuthModule
   ],
   declarations: [
       AppComponent,

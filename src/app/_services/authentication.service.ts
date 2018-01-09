@@ -5,9 +5,14 @@ import 'rxjs/add/operator/map'
 
 import { FacebookService, InitParams, LoginResponse  } from 'ngx-facebook';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
+import * as firebase from 'firebase/app';
+
+
 @Injectable()
 export class AuthenticationService {
-    constructor(private http: Http, private fb: FacebookService) { 
+    constructor(private http: Http, private fb: FacebookService, private fauth: AngularFireAuth) { 
         
     let initParams: InitParams = {
         appId: '414359645650112',
@@ -16,6 +21,10 @@ export class AuthenticationService {
       };
    
       fb.init(initParams);
+    }
+
+    registerNewUser(user: string, pass: string){
+        return this.fauth.auth.createUserWithEmailAndPassword(user, pass);
     }
 
     loginWithFacebook() {
