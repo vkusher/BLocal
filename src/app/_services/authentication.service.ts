@@ -3,12 +3,23 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { UserService } from '../_services/user.service';
 
+import {AppComponent} from '../app.component'
+
 import * as fb from 'firebase';
 
 @Injectable()
-export class AuthenticationService {
-    constructor(private fauth: AngularFireAuth, private userSrvc: UserService) { 
-        
+export class AuthenticationService {    
+
+    constructor(public app: AppComponent, private fauth: AngularFireAuth, private userSrvc: UserService) {         
+          
+    }
+
+    isLoggedIn() {
+        if (this.app.userDetails == null ) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     registerNewUser(user: string, pass: string){

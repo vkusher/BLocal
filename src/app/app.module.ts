@@ -60,7 +60,8 @@ export const firebaseConfig = {
       AlertService,
       AuthenticationService,
       UserService,
-      PropertyService 
+      PropertyService,
+      AppComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
+
+import * as fb from 'firebase';
+
 
 @Component({
   selector: 'app-root',
@@ -8,18 +12,30 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  public user: Observable<fb.User>;
+  public userDetails: fb.User = null;
+  
 
   constructor(private afAuth: AngularFireAuth, private router: Router){
-    let user = afAuth.auth.currentUser;
-    let url = this.router.url;
-    if(url.toLowerCase() != '/login' && url.toLowerCase() != '/register'){
+    afAuth.auth.onAuthStateChanged( user =>{
       if (user) {
-        // User is signed in.
+          this.userDetails = user;
       } else {
-        this.router.navigate(['/login']);
+          
+          this.userDetails = null;
       }
+
+
+      if (user) {
+        this.userDetails = user;
+    } else {
+        
+        this.userDetails = null;
     }
+  
+    });
+
     
+
   }
 }

@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
         this.propService.Properties.subscribe(data => {
             this.properties = data;
             console.log(data)
+            alert('constructor' + data.length);
         });
 
         this.propService.Properties.map(data=>{
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+        alert('ngOnInit' + this.properties.length);
     }
 
 
