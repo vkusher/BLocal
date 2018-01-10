@@ -1,12 +1,13 @@
 ﻿import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { UserService } from '../_services/user.service';
 
 import * as fb from 'firebase';
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private fauth: AngularFireAuth) { 
+    constructor(private fauth: AngularFireAuth, private userSrvc: UserService) { 
         
     }
 
@@ -32,10 +33,10 @@ export class AuthenticationService {
     }
 
     loginguest(propertyid: string){
-        
+        return this.userSrvc.getUserByProperty(propertyid);
     }
 
     logout() {
-        //return this.fauth.auth.logout();
+        return this.fauth.auth.signOut();
     }
 }

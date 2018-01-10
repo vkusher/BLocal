@@ -50,29 +50,38 @@ export class LoginComponent implements OnInit {
         });          
     }
 
-    login() {
-        this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password)
-            .then(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                })
-                .catch(error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+    login(){
+        if(!this.model.propertyid){
+            this.loading = true;
+            this.authenticationService.login(this.model.username, this.model.password)
+                .then(
+                    data => {
+                        this.router.navigate([this.returnUrl]);
+                    })
+                    .catch(error => {
+                        this.alertService.error(error);
+                        this.loading = false;
+                    });
+        }
+        else{
+            this.loginguest();
+        }
+        
     }
 
     loginguest(){
-        /*this.loading = true;
+        this.loading = true;
         this.authenticationService.loginguest(this.model.propertyid)
             .then(
                 data => {
-                    this.router.navigate([this.returnUrl]);
-                }
+                    console.log(data);
+                    this.loading = false;
+                    //this.router.navigate([this.returnUrl]);
+                })
                 .catch(error => {
+                    console.log(error);
                     this.alertService.error(error);
                     this.loading = false;
-                });*/
+                });
     }
 }

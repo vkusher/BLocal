@@ -49,4 +49,12 @@ export class UserService {
             .catch( error => console.log(error));
         }
     }
+
+    getUserByProperty(propertyid: string){
+        let usersRef = this.db.collection("users");
+        let users = usersRef.ref.where('propertyid','==',propertyid);
+
+        return users.get();
+
+    }
 }

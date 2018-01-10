@@ -18,7 +18,7 @@ import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, PropertyService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -59,7 +59,8 @@ export const firebaseConfig = {
       AuthGuard,
       AlertService,
       AuthenticationService,
-      UserService 
+      UserService,
+      PropertyService 
   ],
   bootstrap: [AppComponent]
 })
