@@ -1,0 +1,30 @@
+.left-login{
+    float: left;
+}
+
+.left-login>img{
+    height: 70px;
+}
+
+.right-login{
+    float: left;
+    margin-left:50px;
+    font-size: 20px;
+}
+
+hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid rgb(66, 11, 11);
+    margin: 1em 0;
+    padding: 0; 
+}
+
+.properties-list{
+
+}
+
+.single-property{
+    
+}
