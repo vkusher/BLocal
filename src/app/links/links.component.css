@@ -1,0 +1,13 @@
+.left-links{
+    float: left;
+}
+
+.left-links>img{
+    height: 50px;
+}
+
+.right-links{
+    float: left;
+    margin-left:50px;
+    font-size: 20px;
+}
