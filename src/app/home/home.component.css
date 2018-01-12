@@ -1,15 +1,24 @@
-.left-login{
+.left-home{
     float: left;
 }
 
-.left-login>img{
-    height: 70px;
+.left-home>img{
+    height: 50px;
 }
 
-.right-login{
+.right-home{
     float: left;
     margin-left:50px;
     font-size: 20px;
+}
+
+hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid rgb(66, 11, 11);
+    margin: 1em 0;
+    padding: 0; 
 }
 
 hr{

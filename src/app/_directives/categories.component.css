@@ -1,0 +1,21 @@
+.flex-container{
+    display: flex;
+    justify-content: left;
+    align-items: space-between;   
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.flex-container > .item{
+    width: 100px;
+    height: 100px;
+    margin-right:20px;
+    text-align: center;
+    position: relative;
+}
+
+.item > .item-text{
+   position: absolute;
+   bottom: 5px;
+   width: 100%;
+}

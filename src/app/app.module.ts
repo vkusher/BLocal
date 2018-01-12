@@ -18,12 +18,15 @@ import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 
-import { AlertService, AuthenticationService, UserService, PropertyService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, PropertyService, CategoriesService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 
 import { FacebookModule } from 'ngx-facebook';
+import { LinksComponent } from './links/links.component';
+import { PropertyComponent } from './property/property.component';
+import { CategoriesComponent } from './_directives/categories.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBgiDyyScVcEXk8Hfc6B7k9gLopYLEx8XA",
@@ -45,14 +48,17 @@ export const firebaseConfig = {
       AngularFirestoreModule,
       AngularFireModule,
       AngularFireDatabaseModule,
-      AngularFireAuthModule
+      AngularFireAuthModule      
   ],
   declarations: [
       AppComponent,
       AlertComponent,
       HomeComponent,
       LoginComponent,
-      RegisterComponent
+      RegisterComponent,
+      LinksComponent,
+      PropertyComponent,
+      CategoriesComponent
   ],
   providers: [
     customHttpProvider,
@@ -61,7 +67,8 @@ export const firebaseConfig = {
       AuthenticationService,
       UserService,
       PropertyService,
-      AppComponent
+      AppComponent,
+      CategoriesService
   ],
   bootstrap: [AppComponent]
 })

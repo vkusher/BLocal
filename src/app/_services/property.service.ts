@@ -8,7 +8,7 @@ import { User, Property, Picture } from '../_models/index';
 @Injectable()
 export class PropertyService {
 
-  propertiesRef: AngularFirestoreCollection<Property> = this.db.collection('properties')
+  propertiesRef: AngularFirestoreCollection<Property> = this.db.collection('properties');
   public Properties: Observable<Property[]> = this.propertiesRef.valueChanges();
 
   constructor(private db: AngularFirestore) { }
