@@ -11,11 +11,11 @@ export class AuthGuard{
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (this.authSrvc.isLoggedIn()){
+        /*if (this.authSrvc.isLoggedIn()){
             return true;
         }         
         // not logged in so redirect to login page with the return url
-        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-        return false;
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});*/
+        return true;
     }
 }

@@ -23,19 +23,10 @@ export class AppComponent {
       } else {
           
           this.userDetails = null;
+          this.router.navigate(['/login']);
       }
-
-
-      if (user) {
-        this.userDetails = user;
-    } else {
-        
-        this.userDetails = null;
-    }
   
-    });
-
-    
+    });   
 
   }
 }
