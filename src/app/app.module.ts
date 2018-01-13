@@ -27,6 +27,7 @@ import { FacebookModule } from 'ngx-facebook';
 import { LinksComponent } from './links/links.component';
 import { PropertyComponent } from './property/property.component';
 import { CategoriesComponent } from './_directives/categories.component';
+import { CategoryComponent } from './category/category.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBgiDyyScVcEXk8Hfc6B7k9gLopYLEx8XA",
@@ -58,7 +59,8 @@ export const firebaseConfig = {
       RegisterComponent,
       LinksComponent,
       PropertyComponent,
-      CategoriesComponent
+      CategoriesComponent,
+      CategoryComponent
   ],
   providers: [
     customHttpProvider,
