@@ -1,0 +1,16 @@
+.links-back{
+    cursor: pointer;
+}
+
+.category-title{
+
+}
+
+.reccomendations-title{
+    background-color: #0073e6;
+    color:#FFF;
+    font-size: 18px;
+    height: 100px;
+    line-height: 50px;
+    text-align: center;
+}

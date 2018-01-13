@@ -11,13 +11,30 @@
     width: 100px;
     height: 100px;
     margin-right:20px;
-    text-align: center;
+    padding: 10px;
     position: relative;
     cursor: pointer;
 }
 
+.item{
+    border-width:1px;
+    border-style: solid;
+}
 .item > .item-text{
    position: absolute;
    bottom: 5px;
    width: 100%;
+}
+
+.poi-slogan{
+    font-size: 16px;
+}
+
+.poi-name{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.poi-description{
+    font-size: 11px;
 }

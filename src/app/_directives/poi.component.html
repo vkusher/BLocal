@@ -1,6 +1,19 @@
 <div class="flex-container">
-        <div class="item" *ngFor="let poi of pois">
-         <div class="item-text"> {{poi.name}}</div>
+        <div class="item" *ngFor="let poi of pois"
+        [ngStyle]="{'border-color':poi.bordercolor , 'width' : poi.picture?'100%':'50%' }"
+        >
+        <div class="poi-slogan">
+                {{poi.slogan}}
+        </div>
+        <div class="poi-name">
+                {{poi.name}}
+        </div>
+        <div class="poi-description">
+                {{poi.description}}
+        </div>
+         <div class="poi-footer">
+             
+         </div>
         </div>
     </div>
     

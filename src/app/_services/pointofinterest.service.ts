@@ -18,5 +18,13 @@ export class PointOfInterestService {
 
   }
   
+  getPoisForCategory(categoryid:string){
+    let poiRefByCat: AngularFirestoreCollection<PointOfInterest> = 
+    this.db.collection('pointsofinterest', ref => ref.where('isactive', '==', true)
+    .where("categoryid","==", categoryid)
+    );
+
+    return poiRefByCat.valueChanges();
+  }
 
 }

@@ -14,9 +14,12 @@ export class CategoriesService {
 
   constructor(private db: AngularFirestore) { }
 
-  getCategories(){
+  getCategoryData(categoryid:string){
 
-  }
-  
+    let catDataRef = this.db.collection('categories', ref => ref.where('isactive', '==', true)
+    .where("_id", "==", categoryid).limit(1)
+    );
+    return catDataRef.valueChanges();
+  } 
 
 }
