@@ -1,0 +1,17 @@
+.item{   
+    width: 100px;
+    height: 100px;
+    margin-right:20px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size: 50% 50%;
+}
+
+.item > .item-text{
+   position: absolute;
+   bottom: 5px;
+   width: 100%;
+}
