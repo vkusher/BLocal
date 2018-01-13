@@ -10,7 +10,7 @@ import * as fdb from 'firebase';
 export class PointOfInterestService {
 
   poiRef: AngularFirestoreCollection<PointOfInterest> = this.db.collection('pointsofinterest', ref => ref.where('isactive', '==', true));
-  public Categories: Observable<PointOfInterest[]> = this.poiRef.valueChanges();
+  public PointsOfInterest: Observable<PointOfInterest[]> = this.poiRef.valueChanges();
 
   constructor(private db: AngularFirestore) { }
 
