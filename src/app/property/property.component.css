@@ -1,0 +1,10 @@
+.property-container{
+    border: dashed 1px #000;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 50px;
+}
+.property-img{
+    float: right;
+    cursor: pointer;
+}

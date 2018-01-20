@@ -11,7 +11,7 @@ import { Category } from '../_models/index';
   templateUrl: './categorydata.component.html',
   styleUrls: ['./categorydata.component.css']
 })
-export class CategoryDataComponent implements OnInit {
+export class CategoryDataComponent implements OnInit, OnDestroy {
   private catSubscription: Subscription;
   private routeSubscription: Subscription;
   private catId: string;

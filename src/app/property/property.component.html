@@ -1,3 +1,28 @@
-<p>
-  property works!
-</p>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="property-container">
+      <span class="property-title">{{pData.name}}</span>
+      <img class="property-img" src="../../assets/propinfo.png" />
+      <img class="property-img" src="../../assets/propvote.png" />
+    </div>
+  </div>
+  <div class="col-md-6 col-md-offset-3">
+    <div class="property-container">
+      <span class="property-title">{{pData.address}}</span>
+      <img class="property-img" src="../../assets/proplocation.png" />
+    </div>
+  </div>
+  <div class="col-md-6 col-md-offset-3">
+    <div class="property-container">
+      <span class="property-title">Contact {{pData.user.firstname}}</span>
+      <img class="property-img" src="../../assets/propemail.png" />
+      <img class="property-img "src="../../assets/propmessage.png" />
+      <img class="property-img "src="../../assets/propphone.png" />
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <app-categories></app-categories>
+  </div>
+</div>
