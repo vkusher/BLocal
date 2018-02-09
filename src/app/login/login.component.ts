@@ -6,6 +6,8 @@ import { AlertService, AuthenticationService, UserService } from '../_services/i
 
 import { User } from '../_models/index';
 
+import { environment } from '../../environments/environment';
+
 @Component({
     moduleId: module.id,
     templateUrl: 'login.component.html',
@@ -23,6 +25,7 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
         private userService: UserService) { 
+            
             
         }
 

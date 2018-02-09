@@ -1,25 +1,26 @@
 import { Injectable } from '@angular/core';
+import { Http, RequestOptionsArgs } from '@angular/http';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Category } from '../_models/index';
+import { environment } from '../../environments/environment';
 
 import * as fdb from 'firebase';
 
 @Injectable()
 export class CategoriesService {
+  
+  public Categories: Observable<Category[]> = this.getCategories();
 
-  categoriesRef: AngularFirestoreCollection<Category> = this.db.collection('categories', ref => ref.where('isactive', '==', true));
-  public Categories: Observable<Category[]> = this.categoriesRef.valueChanges();
-
-  constructor(private db: AngularFirestore) { }
+  constructor(private httpService: Http) { }
 
   getCategoryData(categoryid:string){
 
-    let catDataRef = this.db.collection('categories', ref => ref.where('isactive', '==', true)
-    .where("_id", "==", categoryid).limit(1)
-    );
-    return catDataRef.valueChanges();
+    return this.httpService.get(environment.apiurl + 'getcategory/' + categoryid);
   } 
-
+  
+  getCategories() {
+    return this.httpService.get( environment.apiurl + 'getcategories').map(data => data.json());
+  }
 }

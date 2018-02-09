@@ -1,30 +1,31 @@
 import { Injectable } from '@angular/core';
+import { Http, RequestOptionsArgs } from '@angular/http';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { PointOfInterest } from '../_models/index';
+import { environment } from '../../environments/environment';
 
 import * as fdb from 'firebase';
 
 @Injectable()
 export class PointOfInterestService {
 
-  poiRef: AngularFirestoreCollection<PointOfInterest> = this.db.collection('pointsofinterest', ref => ref.where('isactive', '==', true));
-  public PointsOfInterest: Observable<PointOfInterest[]> = this.poiRef.valueChanges();
+  public PointsOfInterest: Observable<PointOfInterest[]> = this.getPoIs();
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private httpService: Http) { }
 
   getCategories(){
 
   }
   
   getPoisForCategory(categoryid:string){
-    let poiRefByCat: AngularFirestoreCollection<PointOfInterest> = 
-    this.db.collection('pointsofinterest', ref => ref.where('isactive', '==', true)
-    .where("categoryid","==", categoryid)
-    );
+    
+    return this.httpService.get(environment.apiurl + 'getpoisforcategory/' + categoryid).map((res) => res.json());
+  }
 
-    return poiRefByCat.valueChanges();
+  getPoIs(){
+    return this.httpService.get(environment.apiurl + 'getpois').map((res) => res.json());
   }
 
 }
