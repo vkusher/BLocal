@@ -2,8 +2,11 @@ ng build
 gcloud app deploy --version v1
 gcloud app browse
 
+ng build -env=prod
+
 git add 'src/*'
-git commit -am 'comment'
+git commit -am "comment"
+git push
 
 -Handler iisnode -NodeStartFile index.js -appType node
 
