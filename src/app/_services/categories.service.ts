@@ -17,7 +17,7 @@ export class CategoriesService {
 
   getCategoryData(categoryid:string){
 
-    return this.httpService.get(environment.apiurl + 'getcategory/' + categoryid);
+    return this.httpService.get(environment.apiurl + 'getcategory/' + categoryid).map(data=>data.json());
   } 
   
   getCategories() {

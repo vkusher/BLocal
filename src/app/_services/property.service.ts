@@ -16,6 +16,7 @@ import { environment } from '../../environments/environment';
 export class PropertyService {
   
   
+  
   public Properties: Observable<Property[]> = this.getProperties();
   public propertyData: Observable<any>;
 
@@ -27,5 +28,9 @@ export class PropertyService {
   
   getProperties() {
     return this.httpService.get(environment.apiurl + 'getproperties').map(data => data.json());
+ };
+
+ voteForProperty(propId: string, uid: string): any {
+  return this.httpService.get(environment.apiurl + 'voteforproperty/' + propId  + '/' + uid ).map(data => data.json());
  };
 }

@@ -1,23 +1,46 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="property-container">
-      <span class="property-title">{{pData.name}}</span>
-      <img class="property-img" src="../../assets/propinfo.png" />
-      <img class="property-img" src="../../assets/propvote.png" />
+      <span class="property-title">{{pData.Name}}</span>
+      <div class="popup">
+          <div class="popuptext"  id="propPopup">
+              <img class="info-image" [src]="pData.Owner.Picture"/>
+              <div class="clearfix"></div>
+              <div class="info-welcome">Welcome to my apartment !</div>
+              <div class="info-description">
+                  {{pData.Description}}
+              </div>
+              <div class="info-footer">Enjoy your stay</div>
+              <div class="info-name">{{pData.Owner.FirstName}}</div>
+              <div class="info-videos">
+                  Watch my video&nbsp;&nbsp;<a target="_blank" href="{{pData.VideoUrl}}"><img src="../../assets/myvideo.png"/></a>
+              </div>
+          </div>
+        <img (click)="openPopup()" class="property-img" src="../../assets/propinfo.png" />
+        
+      </div>
+      <img [style.visibility]="isVoted ? 'hidden':'visible'" class="property-img" src="../../assets/propvote.png" (click)="voteForProperty()"/>
     </div>
   </div>
   <div class="col-md-6 col-md-offset-3">
     <div class="property-container">
-      <span class="property-title">{{pData.address}}</span>
-      <img class="property-img" src="../../assets/proplocation.png" />
+      <span class="property-title">{{pData.Address}}</span>
+      <a target="_blank" href="https://www.google.com/maps/?q={{pData.Lat}},{{pData.Long}}">
+       <img class="property-img" src="../../assets/proplocation.png" />
+     </a>
     </div>
   </div>
   <div class="col-md-6 col-md-offset-3">
     <div class="property-container">
-      <span class="property-title">Contact {{pData.user.firstname}}</span>
-      <img class="property-img" src="../../assets/propemail.png" />
-      <img class="property-img "src="../../assets/propmessage.png" />
-      <img class="property-img "src="../../assets/propphone.png" />
+      <span class="property-title">Contact {{pData.Owner.FirstName}}</span>
+      <a href="mailto:{{pData.Owner.Email}}">
+        <img class="property-img" src="../../assets/propemail.png" />
+      </a>      
+      <img class="property-img" src="../../assets/propmessage.png" />
+      
+      <a href="tel:{{pData.Owner.Mobile}}">
+        <img class="property-img "src="../../assets/propphone.png" />
+      </a>
     </div>
   </div>
 </div>

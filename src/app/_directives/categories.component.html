@@ -1,7 +1,7 @@
 <div class="flex-container">
     <div class="item" *ngFor="let cat of categories"
-    [ngStyle]="{'background-image':'url(assets/' + cat.picture + ')', 'background-color' : cat.bgcolor}"
-    [routerLink]="['/category', cat._id]" >
-     <div class="item-text"> {{cat.name}}</div>
+    [ngStyle]="{'background-image':'url(assets/' + cat.Picture + ')', 'background-color' : cat.BgColor}"
+    [routerLink]="['/category', cat.CategoryId]" >
+     <div class="item-text"> {{cat.Name}}</div>
     </div>
 </div>

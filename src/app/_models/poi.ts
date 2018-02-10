@@ -1,12 +1,12 @@
 export class PointOfInterest{
-    _id: string;
-    categoryid: string;
-    name: string;
-    slogan: string;
-    description: string;
-    location:any;
-    phone: string;
-    likes:Number;
-    url:string;
-    picture:string;
+    PoiId: string;
+    CategoryId: string;
+    Name: string;
+    Slogan: string;
+    Description: string;
+    Location:any;
+    Phone: string;
+    Likes:Number;
+    Url:string;
+    Picture:string;
 }

@@ -1,7 +1,7 @@
 export class Category {
-    _id: string;
-    name: string;
-    bgcolor: string;
-    isactive: Boolean;
-    picture: string;
+    CategoryId: string;
+    Name: string;
+    BgColor: string;
+    IsActive: Boolean;
+    Picture: string;
 }

@@ -53,11 +53,11 @@ export class RegisterComponent {
 
     private createUserInDb(id: string) : void{
         let usr = new User();
-        usr._id = id;
-        usr.firstName =  this.model.firstName;
-        usr.lastName =  this.model.lastName;
-        usr.username =  this.model.username;
-        usr.phoneNumber =  this.model.phoneNumber;
+        usr.FireBaseId = id;
+        usr.FirstName =  this.model.firstName;
+        usr.LastName =  this.model.lastName;
+        usr.UserName =  this.model.username;
+        usr.PhoneNumber =  this.model.phoneNumber;
         this.userService.createUser(usr);
     }
 }

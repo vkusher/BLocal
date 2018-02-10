@@ -1,12 +1,12 @@
 ﻿export class User {
-    _id: string;
-    username: string;
-    password: string;
-    firstName: string;
-    lastName: string;    
-    firebaseId: string;  
-    phoneNumber: string;  
+    UserId: string;
+    UserName: string;
+    Password: string;
+    FirstName: string;
+    LastName: string;    
+    FireBaseId: string;  
+    PhoneNumber: string;  
     isOwner: Boolean;
-    isAdmin: Boolean;
-    isEmailApproved: Boolean;
+    IsAdmin: Boolean;
+    IsEmailApproved: Boolean;
 }

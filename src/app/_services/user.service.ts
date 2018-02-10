@@ -21,13 +21,14 @@ export class UserService {
     createUser(user: User){
         
         let newUser :any = {
-            FirstName: user.firstName,
-            LastName: user.lastName,
-            PhoneNumber: user.phoneNumber,
-            UserName: user.username,
+            FirstName: user.FirstName,
+            LastName: user.LastName,
+            PhoneNumber: user.PhoneNumber,
+            UserName: user.UserName,
             IsOwner: false,
             IsAdmin: false,
-            IsEmailApproved: false
+            IsEmailApproved: false,
+            FireBaseId: user.FireBaseId
         };
         
         this.httpService.post(environment.apiurl + 'createuser', newUser ).subscribe(error => console.log(error));

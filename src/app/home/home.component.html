@@ -14,7 +14,7 @@
         <ul class="properties-list">
             <li *ngFor="let prop of properties">
                 <span class="single-property">
-                    <a [routerLink]="['/property', prop._id]" >{{prop.name}}</a>
+                    <a [routerLink]="['/property', prop.PropertyId]" >{{prop.Name}}</a>
                 </span>
             </li>
         </ul>

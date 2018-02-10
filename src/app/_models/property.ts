@@ -1,20 +1,20 @@
 export class Property{
-    _id: string;
-    name: string;
-    address: string;
-    city: string;
-    county: string;
-    state: string;
-    country: string;
-    zipcode: string;
-    latitude: Number;
-    longitude: Number;    
-    pictures: Array<Picture>;
+    PropertyId: string;
+    Name: string;
+    Address: string;
+    City: string;
+    County: string;
+    State: string;
+    Country: string;
+    ZipCode: string;
+    Lat: Number;
+    Long: Number;    
+    Pictures: Array<Picture>;
 }
 
 export class Picture{
-    _id: string;
-    propertyid: string;
-    bigurl: string;
-    smallurl:string;
+    PictureId: string;
+    PropertyId: string;
+    BigUrl: string;
+    SmallUrl:string;
 }

@@ -8,3 +8,91 @@
     float: right;
     cursor: pointer;
 }
+
+.popup {
+    float: right;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;    
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+    left: 50%;
+    margin-left: -280px;
+    border: dashed 1px #000;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 95%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+.info-image{
+    float: left;
+}
+
+.info-welcome{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.info-description{
+    text-align: left;
+}
+
+.info-footer{
+    margin-top: 10px;
+    text-align: left;
+}
+
+.info-name{
+    text-align: left;
+}
+
+.info-videos{
+    text-align: right;
+}
+
+.clearfix{
+    clear: both;
+}
