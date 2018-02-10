@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
             this.authenticationService.login(this.model.username, this.model.password)
                 .then(
                     data => {
+                        this.userService.updateUserId(this.model.username, data.uid);
                         this.router.navigate([this.returnUrl]);
                     })
                     .catch(error => {

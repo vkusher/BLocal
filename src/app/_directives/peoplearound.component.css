@@ -1,0 +1,71 @@
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.flex-container > .item{
+    width: 100%;
+    height: 50px;    
+    text-align: left;
+    position: relative;
+    cursor: pointer;
+    
+}
+
+.item-pict{
+    float: left;
+}
+
+.item-text{
+    float: left;
+    line-height: 50px;
+}
+
+.chat-header{
+    text-align: center;
+    margin: 20px;
+}
+
+.clearfix{
+    clear: both;
+}
+
+.popup{
+    visibility: hidden;
+    display: none;
+    border-radius: 25px;
+    border: 1px solid #000;
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    height: 350px;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+}
+
+.closechat{
+    float: right;
+    margin: 10px;
+    cursor: pointer;
+}
+
+
+.chatboox{
+    height: 200px;
+    width: 80%;
+    border-radius: 25px;
+    border: 1px dotted #000;
+    background-color: #fff;
+    margin: auto;
+    padding: 10px;
+}
+
+.sendchat{
+    float: right;    
+    margin: 10px;
+    cursor: pointer;
+}

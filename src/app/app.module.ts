@@ -28,7 +28,8 @@ import { FacebookModule } from 'ngx-facebook';
 import { LinksComponent } from './links/links.component';
 import { PropertyComponent } from './property/property.component';
 import { CategoryComponent} from './category/category.component'
-import { CategoriesComponent, CategoryDataComponent, PoiComponent  } from './_directives/index';
+import { CategoriesComponent, CategoryDataComponent, PoiComponent, PeopleAroundComponent  } from './_directives/index';
+import { AroundComponent } from './around/around.component';
 
 
 
@@ -66,7 +67,9 @@ export const firebaseConfig = {
       CategoriesComponent,
       CategoryComponent,
       PoiComponent,
-      CategoryDataComponent
+      CategoryDataComponent,
+      AroundComponent,
+      PeopleAroundComponent
   ],
   providers: [
     customHttpProvider,

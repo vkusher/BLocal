@@ -1,0 +1,16 @@
+<div class="flex-container">
+    <div class="item" *ngFor="let p of people" (click)="startChat(p)">
+        <div class="item-pict"><img src="../../assets/{{p.Gender}}.png" /></div>
+        <div class="item-text"> {{p.FirstName}}</div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="popup" id="chatPopup">
+            <img class="closechat" src="../../assets/close.png" (click)="closeChat()"/>
+            <div class="chat-header">Send your message</div>
+            <div class="chatboox" contenteditable="true"></div>
+            <div class="sendchat">
+                <img src="../../assets/send.png" (click)= "senMessage()" />
+            </div>
+    </div>
+</div>
+

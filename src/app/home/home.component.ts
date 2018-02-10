@@ -44,8 +44,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     }
 
-    showLinks(){
+    showLinks(): void{
         this.router.navigate(['links']);
     }
     
+    showAround(): void{
+        this.router.navigate(['around']);
+    }
 }

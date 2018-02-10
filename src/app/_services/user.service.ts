@@ -12,6 +12,8 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {    
+  
+    
     constructor(private db: AngularFirestore, private httpService: Http ) {
         
     }
@@ -55,11 +57,28 @@ export class UserService {
 
             this.httpService.post( environment.apiurl + 'createuser', newUser).subscribe(error => console.log(error));
         }
-    }
+    };
+
+    updateUserId(username: string, firebaseid: string): any {
+        let usr: any = {
+            UserName: username,
+            FireBaseId: firebaseid
+        };
+        this.httpService.post( environment.apiurl + 'updateuser', usr).subscribe(error => console.log(error));
+    };
 
     getUserByProperty(propertyid: string){        
 
         return this.httpService.get( environment.apiurl + 'getuser/' + propertyid).toPromise();
 
+    };
+
+    getPeopleAround(userid: string, latitude: any, longitude: any): any {
+        let postData = {
+            FireBaseId: userid,
+            Latitude: latitude,
+            Longitude: longitude
+        };
+        return this.httpService.post( environment.apiurl + 'getpeople', postData ).map(data=>data.json());
     }
 }
