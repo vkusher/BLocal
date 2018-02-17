@@ -12,21 +12,27 @@ import * as fb from 'firebase';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public user: Observable<fb.User>;
+  public user$: Observable<fb.User> = new Observable();
   public userDetails: fb.User = null;
   
 
   constructor(private afAuth: AngularFireAuth, private router: Router){
     afAuth.auth.onAuthStateChanged( user =>{
       if (user) {
-          this.userDetails = user;
-      } else {
-          
-          this.userDetails = null;
+        localStorage.setItem("blocaluserid", user.uid);
+          this.userDetails = user;          
+      } else {          
+          this.userDetails = null;    
+          localStorage.removeItem("blocaluserid");      
           this.router.navigate(['/login']);
       }
   
     });   
 
   }
+
+  getCurrentUserId(): string {
+    return localStorage.getItem("blocaluserid") ? localStorage.getItem("blocaluserid") : '0x0';
+  }
+
 }

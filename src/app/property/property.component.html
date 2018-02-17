@@ -35,9 +35,10 @@
       <span class="property-title">Contact {{pData.Owner.FirstName}}</span>
       <a href="mailto:{{pData.Owner.Email}}">
         <img class="property-img" src="../../assets/propemail.png" />
-      </a>      
-      <img class="property-img" src="../../assets/propmessage.png" />
-      
+      </a>     
+      <a href="sms:{{pData.Owner.Mobile}}">
+        <img class="property-img" src="../../assets/propmessage.png" />
+      </a> 
       <a href="tel:{{pData.Owner.Mobile}}">
         <img class="property-img "src="../../assets/propphone.png" />
       </a>

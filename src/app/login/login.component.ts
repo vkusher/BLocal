@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AlertService, AuthenticationService, UserService } from '../_services/index';
+import { AlertService, AuthenticationService, UserService, PropertyService } from '../_services/index';
 
 
 import { User } from '../_models/index';
@@ -24,7 +24,9 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
-        private userService: UserService) { 
+        private userService: UserService,
+        private propertyService: PropertyService
+    ) { 
             
             
         }
@@ -75,17 +77,26 @@ export class LoginComponent implements OnInit {
 
     loginguest(){
         this.loading = true;
-        this.authenticationService.loginguest(this.model.propertyid)
-            .then(
-                data => {
-                    console.log(data);
-                    this.loading = false;
-                    //this.router.navigate([this.returnUrl]);
-                })
-                .catch(error => {
-                    console.log(error);
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+        this.propertyService.getPropertyDataByAirBnB(this.model.propertyid).subscribe(prop =>{
+            if(prop.length){
+                this.authenticationService.loginguest(this.model.propertyid)
+                .then(
+                    data => {
+                        console.log(data);
+                        this.loading = false;
+                        this.router.navigate([this.returnUrl]);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        this.alertService.error(error);
+                        this.loading = false;
+                    });
+            }
+            else{
+                this.alertService.error('Invalid Property Id');
+                this.loading = false;
+            }
+        });
+        
     }
 }

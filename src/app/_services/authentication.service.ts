@@ -44,7 +44,8 @@ export class AuthenticationService {
     }
 
     loginguest(propertyid: string){
-        return this.userSrvc.getUserByProperty(propertyid);
+        //return this.userSrvc.getUserByProperty(propertyid);
+        return this.fauth.auth.signInAnonymously();
     }
 
     logout() {
