@@ -17,6 +17,7 @@ export class PropertyComponent implements OnInit, OnDestroy {
   private isVoted: boolean;
   private pData: any = {};  
   private routeSubscription: Subscription;
+  private isValidGuest: boolean = true;
 
   constructor(private propService : PropertyService, private route : ActivatedRoute
     , private app: AppComponent) {    
@@ -26,8 +27,9 @@ export class PropertyComponent implements OnInit, OnDestroy {
     this.routeSubscription = this.route.params.subscribe(params => {
       this.propId = params["propertyid"];
       propService.getPropertyData(this.propId).subscribe(data=>{        
-        if(data.length > 0){
-          this.pData = data[0];         
+        if(data){
+          this.pData = data;
+          this.isValidGuest = data.IsGuest;         
         }
         
       });          
@@ -51,9 +53,14 @@ export class PropertyComponent implements OnInit, OnDestroy {
     });
   }
 
-  openPopup(): void{
-    var popup = document.getElementById("propPopup");
+  openPopup(id): void{
+    var popup = document.getElementById(id);
     popup.classList.toggle("show");
   }
 
+  closePopup(id): void{
+    var popup = document.getElementById(id);
+    popup.classList.toggle("show");
+  }
+  
 }

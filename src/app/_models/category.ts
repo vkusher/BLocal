@@ -4,4 +4,7 @@ export class Category {
     BgColor: string;
     IsActive: Boolean;
     Picture: string;
+    PropertyId: string;
+    NumOfPoi: number;
+
 }

@@ -23,4 +23,8 @@ export class CategoriesService {
   getCategories() {
     return this.httpService.get( environment.apiurl + 'getcategories').map(data => data.json());
   }
+
+  getCategoriesForProperty(propertyid:string) {
+    return this.httpService.get( environment.apiurl + 'getcategorieforproperty/' + propertyid ).map(data => data.json());
+  }
 }

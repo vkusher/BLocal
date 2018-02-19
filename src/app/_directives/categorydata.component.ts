@@ -15,7 +15,7 @@ export class CategoryDataComponent implements OnInit, OnDestroy {
   private catSubscription: Subscription;
   private routeSubscription: Subscription;
   private catId: string;
-  private categoryData: any;
+  private categoryData: any = {};
 
   constructor(private route: ActivatedRoute,private catService: CategoriesService) { }
 
@@ -24,7 +24,7 @@ export class CategoryDataComponent implements OnInit, OnDestroy {
         this.catId = params["categoryid"];
     });
     this.catSubscription = this.catService.getCategoryData(this.catId).subscribe(data => { 
-      this.categoryData = data[0];
+      this.categoryData = data;
   });
   }
 

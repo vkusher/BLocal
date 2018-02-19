@@ -1,4 +1,4 @@
-ng build
+ng build -env=prod
 gcloud app deploy --version v1
 gcloud app browse
 

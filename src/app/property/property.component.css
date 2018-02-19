@@ -93,6 +93,16 @@
     text-align: right;
 }
 
+.info-close{
+    float: right;
+}
+
 .clearfix{
     clear: both;
+}
+
+.property-title{
+    max-width: 70%;    
+    display: inline-block;
+    text-overflow: ellipsis;
 }

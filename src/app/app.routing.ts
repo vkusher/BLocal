@@ -20,7 +20,7 @@ const appRoutes: Routes = [
     { path: 'links', component: LinksComponent , canActivate: [AuthGuard]},    
     { path: 'around', component: AroundComponent , canActivate: [AuthGuard]},    
     { path: 'property/:propertyid', component: PropertyComponent , canActivate: [AuthGuard]},
-    { path: 'category/:categoryid', component: CategoryComponent , canActivate: [AuthGuard]},
+    { path: 'category/:categoryid/:propertyid', component: CategoryComponent , canActivate: [AuthGuard]},
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

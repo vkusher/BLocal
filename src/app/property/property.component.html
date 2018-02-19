@@ -4,19 +4,20 @@
       <span class="property-title">{{pData.Name}}</span>
       <div class="popup">
           <div class="popuptext"  id="propPopup">
-              <img class="info-image" [src]="pData.Owner.Picture"/>
+              <img class="info-image" [src]="pData.OwnerPicture"/>
+              <img (click)="closePopup('propPopup')" class="info-close" src="../../assets/close.png"/>
               <div class="clearfix"></div>
               <div class="info-welcome">Welcome to my apartment !</div>
               <div class="info-description">
                   {{pData.Description}}
               </div>
               <div class="info-footer">Enjoy your stay</div>
-              <div class="info-name">{{pData.Owner.FirstName}}</div>
+              <div class="info-name">{{pData.OwnerFirstName}}</div>
               <div class="info-videos">
                   Watch my video&nbsp;&nbsp;<a target="_blank" href="{{pData.VideoUrl}}"><img src="../../assets/myvideo.png"/></a>
               </div>
           </div>
-        <img (click)="openPopup()" class="property-img" src="../../assets/propinfo.png" />
+        <img (click)="openPopup('propPopup')" class="property-img" src="../../assets/propinfo.png" />
         
       </div>
       <img [style.visibility]="isVoted ? 'hidden':'visible'" class="property-img" src="../../assets/propvote.png" (click)="voteForProperty()"/>
@@ -32,21 +33,47 @@
   </div>
   <div class="col-md-6 col-md-offset-3">
     <div class="property-container">
-      <span class="property-title">Contact {{pData.Owner.FirstName}}</span>
-      <a href="mailto:{{pData.Owner.Email}}">
+      <span class="property-title">Contact {{pData.OwnerFirstName}}</span>
+      <a href="mailto:{{pData.OwnerEmail}}">
         <img class="property-img" src="../../assets/propemail.png" />
       </a>     
-      <a href="sms:{{pData.Owner.Mobile}}">
+      <a href="sms:{{pData.OwnerMobile}}">
         <img class="property-img" src="../../assets/propmessage.png" />
       </a> 
-      <a href="tel:{{pData.Owner.Mobile}}">
+      <a href="tel:{{pData.OwnerMobile}}">
         <img class="property-img "src="../../assets/propphone.png" />
       </a>
     </div>
   </div>
+  <div class="col-md-6 col-md-offset-3">
+      <div class="property-container"  [style.visibility]= "isValidGuest" >
+        <span class="property-title">Useful information</span>
+        <div class="popup">
+          <div class="popuptext"  id="keyPopup">
+              <img (click)="closePopup('keyPopup')" class="info-close" src="../../assets/close.png"/>
+              <div class="clearfix"></div>
+              <div class="info-welcome">Key</div>
+                <div class="info-description">
+                      {{pData.KeyInfo}}
+              </div>
+          </div>
+          <img (click)="openPopup('keyPopup')" class="property-img" src="../../assets/showkey.png" />
+        </div>
+        <div class="popup">
+          <div class="popuptext"  id="wifiPopup">
+              <img (click)="closePopup('wifiPopup')" class="info-close" src="../../assets/close.png"/>
+              <div class="clearfix"></div>
+              <div class="info-welcome">WiFi</div>
+                <div class="info-description">
+                      {{pData.WiFiInfo}}
+              </div>
+          </div>
+          <img (click)="openPopup('wifiPopup')" class="property-img" src="../../assets/showwifi.png" />
+        </div>
+      </div>
 </div>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <app-categories></app-categories>
+  <div class="col-md-6 col-md-offset-3">    
+    <app-categories [propertyid]="propId"></app-categories>
   </div>
 </div>

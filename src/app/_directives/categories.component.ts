@@ -1,8 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { CategoriesService } from '../_services/index';
 import { Category } from '../_models/index';
+
+
 
 @Component({
   moduleId: module.id,
@@ -11,13 +13,22 @@ import { Category } from '../_models/index';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
+
+  @Input() propertyid: string;
+
   private catSubscription: Subscription;
   public categories: Category[] = [];
 
   constructor(private catService: CategoriesService) { }
 
   ngOnInit() {
-    this.catSubscription = this.catService.Categories.subscribe(data => { this.categories = data; });
+    if(this.propertyid){
+      this.catSubscription = this.catService.getCategoriesForProperty(this.propertyid).subscribe(data => {  this.categories = data; });
+    }
+    else{
+      this.catSubscription = this.catService.Categories.subscribe(data => { this.categories = data; });
+    }
+    
   }
 
   ngOnDestroy(): void {    
