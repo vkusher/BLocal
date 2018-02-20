@@ -30,6 +30,7 @@ import { PropertyComponent } from './property/property.component';
 import { CategoryComponent} from './category/category.component'
 import { CategoriesComponent, CategoryDataComponent, PoiComponent, PeopleAroundComponent  } from './_directives/index';
 import { AroundComponent } from './around/around.component';
+import { RecommendComponent } from './recommend/recommend.component';
 
 
 
@@ -69,7 +70,8 @@ export const firebaseConfig = {
       PoiComponent,
       CategoryDataComponent,
       AroundComponent,
-      PeopleAroundComponent
+      PeopleAroundComponent,
+      RecommendComponent
   ],
   providers: [
     customHttpProvider,

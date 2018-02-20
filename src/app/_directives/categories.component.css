@@ -24,3 +24,15 @@
    bottom: 5px;
    width: 100%;
 }
+
+.item-num{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: #FFF;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 13px;
+}

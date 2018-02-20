@@ -63,4 +63,11 @@ export class PropertyComponent implements OnInit, OnDestroy {
     popup.classList.toggle("show");
   }
   
+  parsePhone(phone: string): string{
+    return phone ? phone.replace('+','').replace(/ /g,'') : '';
+  }
+
+  proposeLink(): void{
+    
+  }
 }

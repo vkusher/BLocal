@@ -37,7 +37,7 @@
       <a href="mailto:{{pData.OwnerEmail}}">
         <img class="property-img" src="../../assets/propemail.png" />
       </a>     
-      <a href="sms:{{pData.OwnerMobile}}">
+      <a target="_blank"  href="https://api.whatsapp.com/send?phone={{parsePhone(pData.OwnerMobile)}}">
         <img class="property-img" src="../../assets/propmessage.png" />
       </a> 
       <a href="tel:{{pData.OwnerMobile}}">
@@ -75,5 +75,12 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">    
     <app-categories [propertyid]="propId"></app-categories>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <div class="prop-proposal">
+      <a [routerLink]="['/recommend', pData.PropertyId]" >I want to recommend a new link</a>
+  </div>
   </div>
 </div>

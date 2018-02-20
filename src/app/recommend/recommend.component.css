@@ -1,0 +1,30 @@
+.rec-header{
+    text-align: center;
+}
+
+.rec-sub1{
+    margin-top: 15px;
+}
+
+.rec-message{
+    width: 90%;
+    height: 200px;
+    border-radius: 25px;
+    border: 1px solid #000;
+    background-color: #fff;
+    padding: 15px;
+}
+
+.rec-back{
+    float: left;
+    cursor: pointer;
+}
+
+.rec-send{
+    float: right;
+    cursor: pointer;
+}
+
+.rec-disabled{
+    pointer-events:none;
+}

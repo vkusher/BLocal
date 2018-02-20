@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/index';
 import { LinksComponent } from './links/index';
 import { PropertyComponent } from './property/index';
 import { CategoryComponent } from './category/index';
+import { RecommendComponent } from './recommend/index';
 import { AroundComponent } from './around/index';
 
 
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     { path: 'links', component: LinksComponent , canActivate: [AuthGuard]},    
     { path: 'around', component: AroundComponent , canActivate: [AuthGuard]},    
     { path: 'property/:propertyid', component: PropertyComponent , canActivate: [AuthGuard]},
+    { path: 'recommend/:propertyid', component: RecommendComponent , canActivate: [AuthGuard]},
     { path: 'category/:categoryid/:propertyid', component: CategoryComponent , canActivate: [AuthGuard]},
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

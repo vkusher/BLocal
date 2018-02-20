@@ -43,4 +43,14 @@ export class PropertyService {
  addNewProperty(propId: string, uid: string){
   return this.httpService.get(environment.apiurl + 'addnewproperty/' + propId + '/' + uid ).map(data => data.json());
  }
+
+ sendRecommendation(propId: string, uid: string, msg: string){
+  let payload = {
+    PropertyId: propId,
+    FireBaseId: uid,
+    Message: msg
+  };
+
+  return this.httpService.post(environment.apiurl + 'sendrecommendation', payload).map(data => data.json());
+ }
 }
