@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     
     showAround(): void{
-        this.router.navigate(['around']);
+        this.router.navigate(['personal']);
     }
 
     fetchUserProperties(): void{

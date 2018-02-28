@@ -1,0 +1,35 @@
+.personal-header{
+    font-size: 18px;
+}
+
+.personal-switch-title{
+    
+}
+.personal-toggle{
+
+}
+
+.row{
+    margin-bottom: 10px;
+}
+
+.no-padding{
+    padding: 0px;
+}
+
+.showaround-link > a{
+    color: inherit;
+    text-decoration: none;
+    float: right;
+}
+
+.img-ul-drag-box-msg{
+    display: none!important;
+}
+.img-ul-upload.img-ul-button{
+    display: none!important;
+}
+
+.upload-cont{
+    position: relative;
+}

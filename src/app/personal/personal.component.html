@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="personal-header"><h3>People around me</h3></div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-8 no-padding">
+      <div class="personal-switch-title">
+        To see others you must be visible as well - please switch on
+      </div>
+    </div>
+    <div class="col-md-4 no-padding">
+      <mat-slide-toggle
+          class="personal-toggle"
+          [color]="color"
+          [checked]="checked"
+          [disabled]="disabled">
+        On
+      </mat-slide-toggle>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12"></div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div>
+    <mat-radio-group>
+      <mat-radio-button value="1">Male</mat-radio-button>
+      <mat-radio-button value="2">Female</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+      <div class="form-group">
+          <label >My Picture</label>
+          <div class="upload-cont">
+              <image-upload 
+              [buttonCaption]="''"
+              [dropBoxMessage]="''" 
+              [max]="1"
+              [style]="customStyle"
+              >
+            </image-upload>
+
+          </div>
+          
+          
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+      <div class="form-group">
+      <label for="phone">My Phone</label>
+      <img src="" />
+      <input class="form-control" name="phone" [(ngModel)]="model.phone" #phone="ngModel"  />
+  </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+      <div class="form-group">
+      <label for="description">My 2 Lines Pitch</label>
+      <img src="" />
+      <input class="form-control" name="description" [(ngModel)]="model.description" #description="ngModel"  />
+  </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="showaround-link">
+        <a [routerLink]="['/around']" >Show me who around me</a>
+    </div>
+  </div>
+</div>

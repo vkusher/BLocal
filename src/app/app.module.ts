@@ -31,9 +31,11 @@ import { CategoryComponent} from './category/category.component'
 import { CategoriesComponent, CategoryDataComponent, PoiComponent, PeopleAroundComponent  } from './_directives/index';
 import { AroundComponent } from './around/around.component';
 import { RecommendComponent } from './recommend/recommend.component';
+import { PersonalComponent } from './personal/personal.component';
 
+import { MatRadioModule , MatSlideToggleModule} from '@angular/material';
 
-
+import { ImageUploadModule } from "angular2-image-upload";
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBgiDyyScVcEXk8Hfc6B7k9gLopYLEx8XA",
@@ -55,7 +57,10 @@ export const firebaseConfig = {
       AngularFirestoreModule,
       AngularFireModule,
       AngularFireDatabaseModule,
-      AngularFireAuthModule      
+      AngularFireAuthModule,
+      MatSlideToggleModule,
+      MatRadioModule,
+      ImageUploadModule.forRoot()
   ],
   declarations: [
       AppComponent,
@@ -71,7 +76,8 @@ export const firebaseConfig = {
       CategoryDataComponent,
       AroundComponent,
       PeopleAroundComponent,
-      RecommendComponent
+      RecommendComponent,
+      PersonalComponent
   ],
   providers: [
     customHttpProvider,
