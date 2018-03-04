@@ -36,7 +36,7 @@
             <button (click)="showLinks()" class="btn btn-primary">Show me linkz around me !</button>            
         </div>  
         <div class="form-group">
-            <button (click)="showAround()" class="btn btn-primary">Show me who is around me !</button>            
+            <button [disabled]="isShowAroundDisabled" (click)="showAround()" class="btn btn-primary">Show me who is around me !</button>            
         </div>  
     </div>
     

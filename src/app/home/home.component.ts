@@ -1,5 +1,6 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from "rxjs/Subscription";
 
 import { Observable } from 'rxjs/Observable';
 import { ISubscription } from "rxjs/Subscription";
@@ -22,6 +23,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     public properties: Property[] = [];
     private propSubscription: ISubscription;
     loading: boolean;
+    private usSubscription: Subscription; 
+    private isShowAround: boolean = false;
+    private isShowAroundDisabled: boolean = true;
 
     constructor(private userService: UserService, 
         public propService: PropertyService,
@@ -31,7 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         private app: AppComponent
     ) {
         
-        this.fetchUserProperties();
+        this.fetchUserProperties();        
     }
 
     ngOnInit() {
@@ -40,6 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(){
         this.propSubscription.unsubscribe();
+        this.usSubscription.unsubscribe();
     }
 
     addNewProperty(){
@@ -64,13 +69,27 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     
     showAround(): void{
-        this.router.navigate(['personal']);
+        if(this.isShowAround){
+            this.router.navigate(['around']);
+        }
+        else{
+            this.router.navigate(['/personal', 'show']);
+        }
+        
     }
 
     fetchUserProperties(): void{
         let uid = this.app.getCurrentUserId();
         this.propSubscription = this.propService.getProperties(uid).subscribe(data => {
-            this.properties = data;              
+            this.properties = data;  
+            
+            this.usSubscription = this.userService.getUserByProperty(uid).subscribe( usr =>{
+                this.isShowAroundDisabled = false;
+                if(data.IsVisibleForMessaging){
+                    this.isShowAround = true;                    
+                }                
+            });
+            
         });
     }
 }

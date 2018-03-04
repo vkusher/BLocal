@@ -21,7 +21,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'links', component: LinksComponent , canActivate: [AuthGuard]},    
     { path: 'around', component: AroundComponent , canActivate: [AuthGuard]},   
-    { path: 'personal', component: PersonalComponent , canActivate: [AuthGuard]},  
+    { path: 'personal/:reqid', component: PersonalComponent , canActivate: [AuthGuard]},  
     { path: 'property/:propertyid', component: PropertyComponent , canActivate: [AuthGuard]},
     { path: 'recommend/:propertyid', component: RecommendComponent , canActivate: [AuthGuard]},
     { path: 'category/:categoryid/:propertyid', component: CategoryComponent , canActivate: [AuthGuard]},

@@ -15,7 +15,9 @@
           class="personal-toggle"
           [color]="color"
           [checked]="checked"
-          [disabled]="disabled">
+          [disabled]="disabled"
+          (change)="onIsShowChange($event)"
+          >
         On
       </mat-slide-toggle>
     </div>
@@ -27,7 +29,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div>
-    <mat-radio-group>
+    <mat-radio-group (change)="radioChanged($event)">
       <mat-radio-button value="1">Male</mat-radio-button>
       <mat-radio-button value="2">Female</mat-radio-button>
     </mat-radio-group>
@@ -44,6 +46,9 @@
               [dropBoxMessage]="''" 
               [max]="1"
               [style]="customStyle"
+              [extensions]="['jpg','png']"
+              (uploadFinished)="onUploadStateChanged($event)"
+              (removed)="onRemoved($event)"
               >
             </image-upload>
 
@@ -58,7 +63,7 @@
       <div class="form-group">
       <label for="phone">My Phone</label>
       <img src="" />
-      <input class="form-control" name="phone" [(ngModel)]="model.phone" #phone="ngModel"  />
+      <input class="form-control" name="phone" (change)="updateUserData()" [(ngModel)]="model.phone" #phone="ngModel"  />
   </div>
   </div>
 </div>
@@ -67,14 +72,14 @@
       <div class="form-group">
       <label for="description">My 2 Lines Pitch</label>
       <img src="" />
-      <input class="form-control" name="description" [(ngModel)]="model.description" #description="ngModel"  />
+      <input class="form-control" name="description" (change)="updateUserData()" [(ngModel)]="model.description" #description="ngModel"  />
   </div>
   </div>
 </div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="showaround-link">
-        <a [routerLink]="['/around']" >Show me who around me</a>
+        <a [hidden]="!isShowAroundMe" [routerLink]="['/around']" >Show me who around me</a>
     </div>
   </div>
 </div>

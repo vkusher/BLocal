@@ -67,9 +67,22 @@ export class UserService {
         this.httpService.post( environment.apiurl + 'updateuser', usr).subscribe(error => console.log(error));
     };
 
+    updateUserForMessaging(firebaseid: string, phone: string, isShow : boolean, message: 
+        string, pict: string, gender: string){
+        let usr: any = {            
+            FireBaseId: firebaseid,
+            PhoneNumber: phone,
+            Picture: pict,
+            IsVisibleForMessaging: isShow,
+            UserPitch: message,
+            Gender: gender
+        };
+        return this.httpService.post( environment.apiurl + 'updateuserformessaging', usr);
+    }
+
     getUserByProperty(propertyid: string){        
 
-        return this.httpService.get( environment.apiurl + 'getuser/' + propertyid).toPromise();
+        return this.httpService.get( environment.apiurl + 'getuser/' + propertyid).map(data=>data.json());
 
     };
 

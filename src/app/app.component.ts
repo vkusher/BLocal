@@ -35,4 +35,8 @@ export class AppComponent {
     return localStorage.getItem("blocaluserid") ? localStorage.getItem("blocaluserid") : '0x0';
   }
 
+  showLoading(show: boolean): void{
+    document.getElementById("loading").style.display = show ? 'block' : 'none';
+    document.getElementById("loading").style.zIndex = show ? '100' : '-1';
+  }
 }
