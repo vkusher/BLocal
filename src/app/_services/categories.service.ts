@@ -11,7 +11,7 @@ import * as fdb from 'firebase';
 @Injectable()
 export class CategoriesService {
   
-  public Categories: Observable<Category[]> = this.getCategories();
+  public Categories: Observable<Category[]> = this.getCategories('');
 
   constructor(private httpService: Http) { }
 
@@ -20,8 +20,8 @@ export class CategoriesService {
     return this.httpService.get(environment.apiurl + 'getcategory/' + categoryid).map(data=>data.json());
   } 
   
-  getCategories() {
-    return this.httpService.get( environment.apiurl + 'getcategories').map(data => data.json());
+  getCategories(uid:string) {
+    return this.httpService.get( environment.apiurl + 'getcategories/' + uid).map(data => data.json());
   }
 
   getCategoriesForProperty(propertyid:string) {

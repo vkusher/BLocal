@@ -55,11 +55,13 @@ export class RecommendComponent implements OnInit, OnDestroy {
         this.alertService.success("The message has been sent");
         this.model.message = '';
         this.loading = false;
+        document.getElementById("recmessage").innerHTML = '';
       }
       else{
         this.alertService.error("Unable to send a message");
         this.model.message = '';
         this.loading = false;
+        document.getElementById("recmessage").innerHTML = '';
       }
     });
 

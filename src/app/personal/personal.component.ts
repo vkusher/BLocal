@@ -26,16 +26,26 @@ export class PersonalComponent implements OnInit, OnDestroy {
   constructor(private app: AppComponent, private userService: UserService, 
     private router: Router, private route : ActivatedRoute, private alertSrvc: AlertService) { 
     
+    this.updateLayot(true);
+    this.model.picture = "../../assets/none.png";
     let uid = app.getCurrentUserId();
 
     this.routeSubscription = this.route.params.subscribe(params => {
       let reqId = params["reqid"];
-      this.usSubscription = userService.getUserByProperty(uid).subscribe( usr =>{
+      this.usSubscription = userService.getUserByProperty(uid).subscribe( usrs =>{
+        let usr = usrs[0];
+        console.log(usr);
+
         this.checked = usr.IsVisibleForMessaging;
+        this.model.phone = usr.PhoneNumber;
+        this.model.description = usr.UserPitch;
+        this.model.picture = usr.Picture ? usr.Picture : "../../assets/none.png";
+        this.model.gender = usr.Gender == 'female' ? 2 : 1;
         this.isShowAroundMe = usr.IsVisibleForMessaging;
-        if(usr.IsVisibleForMessaging && reqId != 'update'){
+        this.updateLayot(false);
+        /*if(usr.IsVisibleForMessaging && reqId != 'update'){
           this.router.navigate(['/around']);
-        }
+        }*/
       });
     });    
   }
@@ -45,9 +55,15 @@ export class PersonalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {        
-    this.routeSubscription.unsubscribe();
-    this.usSubscription.unsubscribe();  
-    this.userUpdateSubscription.unsubscribe(); 
+    if(this.routeSubscription){
+      this.routeSubscription.unsubscribe();
+    }
+    if(this.usSubscription){
+      this.usSubscription.unsubscribe();  
+    }
+    if(this.userUpdateSubscription){
+      this.userUpdateSubscription.unsubscribe(); 
+    }
   }
 
   openimg():void{
@@ -73,6 +89,10 @@ export class PersonalComponent implements OnInit, OnDestroy {
 
   }
 
+  navigateToAround(){
+    this.router.navigate(['/around']);
+  }
+
   radioChanged(event:any){   
     this.model.gender = event.value == "1" ? 'male' : 'female';
     this.updateUserData();
@@ -93,6 +113,22 @@ export class PersonalComponent implements OnInit, OnDestroy {
     this.updateUserData();
   }
 
+  fileChangeEvent(event:any){
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      let obj = this;
+      reader.onload = function (e : any) {
+        console.log(e.target.result);
+        obj.model.picture = e.target.result;
+        obj.updateUserData();
+         
+      }
+
+      reader.readAsDataURL(event.target.files[0]);
+    }  
+    
+  }
+
   customStyle = {
     clearButton : {
         "display": "none"
@@ -108,7 +144,8 @@ export class PersonalComponent implements OnInit, OnDestroy {
       "width":"36px",
       "position":"absolute", 
       "top": "-30px",      
-      "left": "100px"
+      "left": "100px",
+      "background-image" : "url('../assets/loadimage.png')"
     },
     previewPanel:{
       "position":"absolute", 

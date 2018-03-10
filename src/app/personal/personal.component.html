@@ -29,7 +29,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div>
-    <mat-radio-group (change)="radioChanged($event)">
+    <mat-radio-group [ngModel]="model.gender" (change)="radioChanged($event)">
       <mat-radio-button value="1">Male</mat-radio-button>
       <mat-radio-button value="2">Female</mat-radio-button>
     </mat-radio-group>
@@ -41,7 +41,7 @@
       <div class="form-group">
           <label >My Picture</label>
           <div class="upload-cont">
-              <image-upload 
+              <!--<image-upload 
               [buttonCaption]="''"
               [dropBoxMessage]="''" 
               [max]="1"
@@ -50,7 +50,10 @@
               (uploadFinished)="onUploadStateChanged($event)"
               (removed)="onRemoved($event)"
               >
-            </image-upload>
+            </image-upload>-->
+            <input (change)="fileChangeEvent($event)" type="file" id="file" name="file" class="browse-image" accept=".png,.jpeg,.jpg"/>
+            <label class="browse-image-label" for="file"></label>
+            <img class="avatar-image" id="avatar" [src]="model.picture"/>
 
           </div>
           
@@ -72,14 +75,14 @@
       <div class="form-group">
       <label for="description">My 2 Lines Pitch</label>
       <img src="" />
-      <input class="form-control" name="description" (change)="updateUserData()" [(ngModel)]="model.description" #description="ngModel"  />
+      <textarea class="form-control" rows="2" name="description" (change)="updateUserData()" [(ngModel)]="model.description" #description="ngModel" ></textarea>
   </div>
   </div>
 </div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="showaround-link">
-        <a [hidden]="!isShowAroundMe" [routerLink]="['/around']" >Show me who around me</a>
+        <a [hidden]="!isShowAroundMe"  [routerLink]="['/around']" >Show me who around me</a>
     </div>
   </div>
 </div>

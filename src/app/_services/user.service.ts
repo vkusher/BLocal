@@ -14,6 +14,8 @@ import { environment } from '../../environments/environment';
 export class UserService {    
   
     
+  
+  
     constructor(private db: AngularFirestore, private httpService: Http ) {
         
     }
@@ -93,5 +95,18 @@ export class UserService {
             Longitude: longitude
         };
         return this.httpService.post( environment.apiurl + 'getpeople', postData ).map(data=>data.json());
+    }
+
+    setUserLocation(userid: any, latitude: any, longitude: any): any {
+        let postData = {
+            FireBaseId: userid,
+            Latitude: latitude,
+            Longitude: longitude
+        };
+        this.httpService.post( environment.apiurl + 'setuserlocation', postData )
+    }
+
+    sendMessage(postData: any): any {
+        return this.httpService.post( environment.apiurl + 'sendmessage', postData ).map(data=>data.json());
     }
 }

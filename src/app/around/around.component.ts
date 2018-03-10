@@ -9,7 +9,7 @@ import { UserService } from '../_services/index';
   templateUrl: './around.component.html',
   styleUrls: ['./around.component.css']
 })
-export class AroundComponent implements OnInit {
+export class AroundComponent implements OnInit, OnDestroy {
 
   private usSubscription: Subscription;    
 
@@ -18,9 +18,9 @@ export class AroundComponent implements OnInit {
 
       let uid = app.getCurrentUserId();
 
-      this.usSubscription = userService.getUserByProperty(uid).subscribe( usr =>{
+      this.usSubscription = userService.getUserByProperty(uid).subscribe( usrs =>{
           
-        if(!usr.IsVisibleForMessaging){
+        if( usrs[0] && !usrs[0].IsVisibleForMessaging){
           this.router.navigate(['/personal', 'show']);
         }
       });
@@ -31,5 +31,9 @@ export class AroundComponent implements OnInit {
 
   ngOnDestroy(): void {            
     this.usSubscription.unsubscribe();   
+  }
+
+  viewProperties(): void{
+    this.router.navigate(['/personal', 'show']);
   }
 }

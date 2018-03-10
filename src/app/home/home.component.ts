@@ -43,8 +43,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(){
-        this.propSubscription.unsubscribe();
-        this.usSubscription.unsubscribe();
+        if(this.propSubscription){
+            this.propSubscription.unsubscribe();
+        }
+        if(this.usSubscription){
+            this.usSubscription.unsubscribe();
+        }
     }
 
     addNewProperty(){
@@ -68,7 +72,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.router.navigate(['links']);
     }
     
-    showAround(): void{
+    showAround(): void{       
         if(this.isShowAround){
             this.router.navigate(['around']);
         }
@@ -79,17 +83,29 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     fetchUserProperties(): void{
+        this.updateLayot(true);
+
         let uid = this.app.getCurrentUserId();
         this.propSubscription = this.propService.getProperties(uid).subscribe(data => {
             this.properties = data;  
             
-            this.usSubscription = this.userService.getUserByProperty(uid).subscribe( usr =>{
+            this.usSubscription = this.userService.getUserByProperty(uid).subscribe( usrs =>{
                 this.isShowAroundDisabled = false;
-                if(data.IsVisibleForMessaging){
-                    this.isShowAround = true;                    
-                }                
+               
+                if(usrs[0]){
+                    let usr = usrs[0];                    
+                    if(usr.IsVisibleForMessaging){
+                        this.isShowAround = true;                    
+                    } 
+                }                               
+
+                this.updateLayot(false);
             });
             
         });
     }
+
+    updateLayot(isDisabled: boolean): void{
+        this.app.showLoading(isDisabled);
+      }
 }

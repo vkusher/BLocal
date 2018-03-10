@@ -32,4 +32,30 @@
 
 .upload-cont{
     position: relative;
+    display: inline-block;
+}
+
+.browse-image{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+    
+}
+
+.browse-image-label{
+    background-image: url('../../assets/loadimage.png');
+    cursor: pointer;
+    height: 36px;
+    width: 36px;
+    vertical-align: middle;
+    
+}
+
+.avatar-image{
+    border-radius: 50%;
+    height: 42px;
+    width: 42px;
 }

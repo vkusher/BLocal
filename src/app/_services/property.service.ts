@@ -18,6 +18,7 @@ export class PropertyService {
   
   
   
+  
   //public Properties: Observable<Property[]> = this.getProperties();
   public propertyData: Observable<any>;
 
@@ -52,5 +53,9 @@ export class PropertyService {
   };
 
   return this.httpService.post(environment.apiurl + 'sendrecommendation', payload).map(data => data.json());
+ }
+
+ getOwnerName(propertyid: any): any {
+  return this.httpService.get(environment.apiurl + 'getownername/' + propertyid ).map(data => data.json());
  }
 }

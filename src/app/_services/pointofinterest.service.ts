@@ -19,9 +19,9 @@ export class PointOfInterestService {
 
   }
   
-  getPoisForCategory(categoryid:string){
+  getPoisForCategory(categoryid:string, propertyid: string, uid: string){
     
-    return this.httpService.get(environment.apiurl + 'getpoisforcategory/' + categoryid).map((res) => res.json());
+    return this.httpService.get(environment.apiurl + 'getpoisforcategory/' + categoryid + '/' + propertyid + '/' + uid).map((res) => res.json());
   }
 
   getPoIs(){
