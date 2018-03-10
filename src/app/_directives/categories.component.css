@@ -11,6 +11,7 @@
     width: 100px;
     height: 100px;
     margin-right:20px;
+    margin-bottom: 20px;
     text-align: center;
     position: relative;
     cursor: pointer;
@@ -23,6 +24,7 @@
    position: absolute;
    bottom: 5px;
    width: 100%;
+   color:#fff;
 }
 
 .item-num{
