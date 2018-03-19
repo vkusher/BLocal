@@ -1,10 +1,11 @@
 .flex-container{
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: space-between;   
     flex-wrap: wrap;
     margin-top: 30px;
     margin-bottom: 30px;
+    
 }
 
 .flex-container > .item{
@@ -14,6 +15,7 @@
     padding: 10px;
     position: relative;
     cursor: pointer;
+    margin: 10px;
 }
 
 .item{
@@ -27,14 +29,26 @@
 }
 
 .poi-slogan{
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .poi-name{
     font-weight: bold;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .poi-description{
     font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.poi-picture{
+    position: absolute;
+    border: solid 1px #000;
+    right: 10px;
+    top:10px;
+    height: 80px;
+    width: 100px;
 }
