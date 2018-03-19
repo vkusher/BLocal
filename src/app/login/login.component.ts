@@ -8,6 +8,8 @@ import { User } from '../_models/index';
 
 import { environment } from '../../environments/environment';
 
+import { AppComponent } from '../app.component'
+
 @Component({
     moduleId: module.id,
     templateUrl: 'login.component.html',
@@ -25,10 +27,11 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
         private userService: UserService,
-        private propertyService: PropertyService
+        private propertyService: PropertyService,
+        private app: AppComponent
     ) { 
             
-            
+            this.updateLayot(false);
         }
 
     ngOnInit() {
@@ -99,4 +102,8 @@ export class LoginComponent implements OnInit {
         });
         
     }
+
+    updateLayot(isDisabled: boolean): void{
+        this.app.showLoading(isDisabled);
+      }
 }
