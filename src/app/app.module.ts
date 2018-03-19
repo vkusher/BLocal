@@ -37,6 +37,8 @@ import { MatRadioModule , MatSlideToggleModule} from '@angular/material';
 
 import { ImageUploadModule } from "angular2-image-upload";
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 export const firebaseConfig = {
     apiKey: "AIzaSyBgiDyyScVcEXk8Hfc6B7k9gLopYLEx8XA",
     authDomain: "blocal-191611.firebaseapp.com",
@@ -88,7 +90,8 @@ export const firebaseConfig = {
       PropertyService,
       AppComponent,
       CategoriesService,
-      PointOfInterestService
+      PointOfInterestService,
+      {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

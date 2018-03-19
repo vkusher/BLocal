@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.updateLayot(false);
     }
 
     loginWithFacebook(){
@@ -104,6 +105,7 @@ export class LoginComponent implements OnInit {
     }
 
     updateLayot(isDisabled: boolean): void{
+        console.log('Clear loading');
         this.app.showLoading(isDisabled);
       }
 }
